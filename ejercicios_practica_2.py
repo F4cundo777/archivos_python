@@ -11,7 +11,6 @@
 
 import csv
 
-
 def ej3():
     print('Ejercicio de archivos CSV 1º')
     archivo = 'stock.csv'
@@ -28,7 +27,15 @@ def ej3():
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
     
+    csvfile = open(archivo) #Abre el archivo 
+    stock = list(csv.DictReader(csvfile)) #modo lectura
+    csvfile.close()
 
+    valor=0
+    for i in stock:
+        i['tornillos']=int(i['tornillos'])
+        valor+=i['tornillos']
+    print('El stock de tornillos es', valor)
 
 def ej4():
     print('Ejercicios con archivos CSV 2º')
@@ -48,7 +55,27 @@ def ej4():
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
 
+    csvfile = open(archivo)
+    amb = list(csv.DictReader(csvfile))
+    csvfile.close()
+    dos_amb=0
+    tres_amb=0
+    for i in amb:
+        if i['ambientes'] =='2':
+            i['ambientes'] = int(i['ambientes'])
+            i['ambientes']=1
+            dos_amb+=i['ambientes']
+        elif i['ambientes'] =='3':
+            i['ambientes'] = int(i['ambientes'])
+            i['ambientes']=1
+            tres_amb+=i['ambientes']
+        else:
+            pass
 
+    print('La cantidad de departamentos de dos ambientes disponibles son: ',dos_amb)
+    print('La cantidad de departamentos de tres ambientes disponibles son: ', tres_amb)
+
+        
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
     ej3()

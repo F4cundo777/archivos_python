@@ -9,7 +9,9 @@
 
 # Ejercicios con diccionarios
 
+from ast import Try
 import csv
+from re import T
 
 
 def ej1():
@@ -33,6 +35,15 @@ def ej1():
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
 
+    stock = {} #diccionario vacio
+    stock['Tornillos'] = 100
+    stock['Tuercas'] = 150
+    stock['Arandelas'] = 300
+
+    for k,v in stock.items():
+
+        print('La cantidad de {} es {}'.format(k,v))
+        print()
 
 def ej2():
     print('Ejercicio con diccionarios 2º')
@@ -40,7 +51,7 @@ def ej2():
     # como una base de datos. Comenzaremos con un diccionario de stock
     # de nuestros productos en cero:
     
-    strock = {'tornillos': 0, 'tuercas': 0, 'arandelas': 0}
+    stock = {'tornillos': 0, 'tuercas': 0, 'arandelas': 0}
 
     # Paso 1:
     # Crear un bucle utilizando while que se ejecute de forma infinita
@@ -66,8 +77,35 @@ def ej2():
     # imprimir en pantalla con print el diccionario con el stock final
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
+    cantidad=0
+    print('Este es el stock actual:')
+    print()
+    while True:
+        for k,v in stock.items():
+            print('el stock de {} es {}'.format(k,v))
+            print()
+        print('Si desea salir ingrese: FIN')
+        print('Si no, agregue el producto deseado')
+        print()
+        k=str(input('Ingrese el producto deseado o FIN para salir: '))
+       
+                              
+        if k.upper() == 'FIN':
+            for k,v in stock.items():
+                print('el stock de {} es {}'.format(k,v))
+            break
+            
 
-
+        else:
+            try:
+                stock [k] in stock
+                stock [k]+= int(input('Ingrese la cantidad: '))
+                
+            except:
+                print('EL PRODUCTO NO ESTA DEFINIDO EN EL STOCK!!!')
+                print()
+        
+            
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
     ej1()
